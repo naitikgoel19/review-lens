@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Lens — by InsightX</title>
+    <meta name="description" content="Turn customer reviews into product decisions.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              DEFAULT: '#2F8F6B',
+              dark: '#237052',
+              light: '#E8F6EF',
+              vlight: '#F3FAF6',
+            },
+            surface: '#FFFFFF',
+            bg: '#F8FAF9',
+            main: '#17211C',
+            secondary: '#65736B',
+            border: '#E3EAE6',
+            success: '#2E8B57',
+            warning: '#C58A21',
+            danger: '#D9534F',
+          },
+        },
+      },
+    }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', system-ui, sans-serif; background: #F8FAF9; color: #17211C; -webkit-font-smoothing: antialiased; }
+      
+      /* Animations */
+      .fade-in { animation: fadeIn 0.2s ease-out; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+      
+      .slide-in-right { animation: slideInRight 0.25s ease-out; }
+      @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+      
+      .modal-backdrop { animation: fadeInBg 0.15s ease-out; }
+      @keyframes fadeInBg { from { opacity: 0; } to { opacity: 1; } }
+      
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #E3EAE6; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #65736B; }
+      
+      /* Star rating */
+      .star { cursor: pointer; transition: all 0.15s; }
+      .star:hover { transform: scale(1.15); }
+      .star-filled { color: #C58A21; }
+      .star-empty { color: #E3EAE6; }
+      
+      /* Tooltip */
+      [data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+        background: #17211C; color: white; padding: 4px 8px; border-radius: 4px;
+        font-size: 12px; white-space: nowrap; z-index: 50;
+      }
+      
+      /* Charts */
+      .chart-bar { transition: height 0.3s ease-out; }
+      
+      /* Hide spinner */
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+      
+      /* Custom focus */
+      input:focus, textarea:focus, select:focus { outline: none; border-color: #2F8F6B; box-shadow: 0 0 0 3px rgba(47,143,107,0.1); }
+      
+      button:focus-visible { outline: 2px solid #2F8F6B; outline-offset: 2px; }
+      
+      /* Toast */
+      .toast { animation: slideUp 0.3s ease-out, fadeOut 0.3s ease-in 2.7s; }
+      @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+      
+      /* Loading skeleton */
+      .skeleton { background: linear-gradient(90deg, #E3EAE6 25%, #F3FAF6 50%, #E3EAE6 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+      @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+      
+      /* Graph node */
+      .graph-node { transition: all 0.2s; cursor: pointer; }
+      .graph-node:hover { filter: brightness(1.1); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- React via CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Recharts for charts -->
+    <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
+    
+    <script type="text/babel" src="/assets/app.js"></script>
+</body>
+</html>
